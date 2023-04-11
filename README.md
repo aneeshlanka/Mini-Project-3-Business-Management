@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> IS601 Mini Project 3  Business Management</td></tr>
 <tr><td> <em>Student: </em> Aneesh Lanka (al762)</td></tr>
-<tr><td> <em>Generated: </em> 4/11/2023 9:27:27 AM</td></tr>
+<tr><td> <em>Generated: </em> 4/10/2023 11:58:54 PM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IS601-004-S23/is601-mini-project-3-business-management/grade/al762" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <div>Initial Preperation:</div><div><ol><li>Create two new dynos/VMs in Heroku:</li><ol><li>is601-ucid-mp3-dev</li><li>is601-ucid-mp3-prod</li></ol><li>Configure the heroku config vars and github secrets similar to how dev/prod were setup</li><li>Create two new secrets for github and set the values per the machine names in step 1</li><ol><li>HEROKU_APP_MP3_DEV</li><li>HEROKU_APP_MP3_PROD</li></ol><li>Duplicate your dev/prod yml files and have it listen to the mp3-dev and mp3-prod branches respectively</li><ol><li>Make sure you refer to the proper app secrets from step 3</li><li>You can merge these into regular dev/prod later but you'll want your final project to deploy over it (overwrite) on the normal dev/prod dynos/VM</li></ol><li>You can add this HW branch to the dev yml to test your deployments prior to the pull request to dev from step 4</li></ol></div><div><br></div><div><br></div><ol><li>checkout dev and pull any latest changes</li><li>Create a branch called mp3-prod and immediately push it</li><li>Create a branch called mp3-dev and immediately push it</li><li>Create a branch called MiniProject-3</li><li>Add all the baseline files first under a folder called BusinessManagement (included below)</li><li>Don't forget to copy your .env file from flask_sample into BusinessManagement</li><li>source the venv and pip install the requirements.txt</li><li>Run the BusinessManagement/sql/init_db.py script</li><li><b>Immediate add/commit/push to github</b></li><li>Open a pull request to mp3-dev and keep it open until you're done adding the submission file</li><li>Make your code changes per the following requirements</li><ol><li>Important: run the test files indiviudally as you're working/testing to save on query quota usage</li><li>&nbsp;pytest BusinessManagement/test/name_of_test.py -rA</li></ol><li>Add/commit periodically (recommended after you implement a TODO item or checlist item and add a related commit message for clarity)<br></li><ol><li>Do not delete any provided comments</li></ol><li>Anywhere relevant add your ucid and the date you added the code (best to do this as you go)</li><li>You'll be capturing website screenshots from dev and code snippet screenshots (ensure you upload these properly as pull request comments to the pull request from step 10</li><ol><li>Note: You don't need separate screenshots for each checklist item, when possible it's recommended to try to capture multiple items together and reuse the image</li><li>Ensure all screenshots are properly captioned in the deliverable section so it's clear what part you're trying to show</li></ol><li>Once done, copy the markdown or download the md file and save it under the BusinessManagement folder</li><li>Do a final add/commit/push</li><li>Verify everything looks ok in the pull request</li><li>Merge the pull request</li><li>Make a new pull request from mp3-dev to mp3-prod and merge it</li><ol><li>If you want to keep original dev/prod up to date you can merge the changes into those, but they will cause a deploy to occur for each so be mindful</li></ol><li>Navigate to the submission file under the BusinessManagement folder from mp3-prod</li><li>Copy the github url to the exact file and submit it to Canvas</li></ol><div>You'll be implementing a basic Business Management site.</div><div>There will be some provided files fully working as-is and some skeleton files you'll need to fill in.</div><div>The files you need to fill in will have TODO items or comments mentioning what's expected.</div><div>Some files will have "DO NOT EDIT" mentioned, please don't edit these. If there's a doubt about any of them ask.</div><div>There are provided test case files too that all must be passing for full credit. Do not edit these test case files.</div><div>If a test case isn't possible to complete, capture the failed test case locally via `pytest BusinessManagement -rA` first, then you can rename the function to `off_original_name`.</div><div>The site will handle CRUD operations for Companies and Employees as well as allowing import of Company/Employee data via a csv file.</div><div>Note: db.py has been updated to use pymysql instead of mysql-connector-python to aid in easier queries.</div><div><br></div><div>Baseline files:&nbsp;<a href="https://github.com/MattToegel/IS601/tree/F23-MiniProject-3">https://github.com/MattToegel/IS601/tree/F23-MiniProject-3</a>&nbsp;</div><div>May want to download branch as a zip, then copy/paste the files into your repo (if/when you do, please immediately do a git add/commit to record the baseline items)</div><div><br></div><div>Provided files you don't need to edit:</div><div><ul><li>000_create_table_companies.sql</li><li>001_create_table_employees.sql</li><li>db.py</li><li>init_db.py</li><li>flash.html</li><li>company_dropdown.html</li><li>country_state_selector.html</li><li>upload.html</li><li>sort_filter.html</li><li>all test files</li><li>geography.py</li><li>__init__.py (remains empty)</li><li>Dockerfile</li><li>main.py</li><li>index.py</li></ul><div>All other files likely have requirements to fill in.</div></div><div><br></div></td></tr></table>
 <table><tr><td> <em>Deliverable 1: </em> Identity Edits and Setup </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
@@ -18,10 +18,20 @@
 </td></tr>
 </table></td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 2: </em> Upload / Import CSV File (provided data.csv) </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707834-bf5a5b13-ec36-4597-9741-aa830c195be2.png"></td></tr>
+<table><tr><td> <em>Deliverable 2: </em> Upload / Import CSV File (provided data.csv) </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Add screenshot of /import route (code)</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231061598-0bcfad50-1b75-4fe0-bdd8-75283f652d45.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>acceptiing csv files only<br></p>
+</td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231061623-76b7eea0-8b5b-41c4-8b8c-d3a0012ea99e.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>csv file read as dict, extract company and employee data<br></p>
+</td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231061611-924b07d6-2510-4732-972b-1f1f39a3d4d0.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>flash messages<br></p>
+</td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231061604-162eb116-af1d-409b-89c8-f81176072c60.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>flask message if particular list was not loaded<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Screenshots of the website when uploading the data.csv file</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231031940-85163118-b950-492c-86b1-89e09b10a242.png"/></td></tr>
@@ -45,8 +55,11 @@
 </table></td></tr>
 <table><tr><td> <em>Deliverable 3: </em> Add Employee </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshot of code for /add route of employee</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231056186-97d72e9d-9c5b-4141-88ce-6f649fb9e030.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>retrieve first name, last name etc , and flash messages, email format<br></p>
+</td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231056196-cde9c901-74df-4955-8ce1-8c5f678b010e.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>insert statement, except statement<br></p>
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Screenshots of website for add employee</td></tr>
@@ -62,19 +75,20 @@
 </table></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Screenshot of new employee DB record from VS Code / IDE</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231034280-52dd4153-b195-4580-add0-7bf65f2f8213.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>Valid employee added to the table - 1001 New Employee <a href="mailto:&#x6e;&#x65;&#119;&#x65;&#x6d;&#x70;&#x6c;&#111;&#x79;&#x65;&#x65;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6e;&#x65;&#119;&#x65;&#x6d;&#x70;&#x6c;&#111;&#x79;&#x65;&#x65;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a><br></p>
+<tr><td> <em>Caption:</em> <p>Valid employee added to the table - 1001 New Employee <a href="mailto:&#x6e;&#101;&#119;&#x65;&#x6d;&#x70;&#x6c;&#111;&#121;&#x65;&#x65;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#x6e;&#101;&#119;&#x65;&#x6d;&#x70;&#x6c;&#111;&#121;&#x65;&#x65;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a><br></p>
 </td></tr>
 </table></td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 4: </em> List/search Employees </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707834-bf5a5b13-ec36-4597-9741-aa830c195be2.png"></td></tr>
+<table><tr><td> <em>Deliverable 4: </em> List/search Employees </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshots of code for /search route of employee</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
-<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>adf<br></p>
+<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231056729-8e541c8f-b7d8-4a01-a8aa-99a99c22d7dd.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>select statement, check request args<br></p>
 </td></tr>
-<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>ads<br></p>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231056736-72fafea6-89c1-484c-926c-039bff478bfc.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>like filters, append sort if column and order are provided<br></p>
+</td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231056741-f5028345-8ebb-4dbd-88bb-ddf6d46cdfa7.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>appending limit and indicating out of bonds, except blocks<br></p>
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Screenshots of website for search employee</td></tr>
@@ -100,14 +114,17 @@
 </table></td></tr>
 <table><tr><td> <em>Deliverable 5: </em> Edit Employee </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshots of code for /edit route of employee</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231057431-e9e38b72-781f-45cc-8cb3-fdb897771ee9.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>retrieve first name, last name etc<br></p>
+</td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231057445-e8172bac-43b6-4a41-9bb5-e24ae7481d33.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>flash messages<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td> <em>Caption:</em> <p>update query and exceptions<br></p>
 </td></tr>
-<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231057439-ed4b7448-7b40-4261-a8c0-14a3f68ecaf3.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>select query and exceptions<br></p>
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Screenshots of website for edit employee</td></tr>
@@ -115,7 +132,7 @@
 <tr><td> <em>Caption:</em> <p>Josephine Darakjy mail id will be changed<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231048770-e5cd7224-5c0b-4762-8671-e9d03741f836.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>Josephine Darakjy mail id changed to <a href="mailto:&#74;&#68;&#64;&#x64;&#x61;&#114;&#97;&#x6b;&#106;&#121;&#x2e;&#x6f;&#114;&#x67;">&#74;&#68;&#64;&#x64;&#x61;&#114;&#97;&#x6b;&#106;&#121;&#x2e;&#x6f;&#114;&#x67;</a><br></p>
+<tr><td> <em>Caption:</em> <p>Josephine Darakjy mail id changed to <a href="mailto:&#x4a;&#x44;&#64;&#x64;&#97;&#x72;&#97;&#107;&#106;&#121;&#46;&#x6f;&#114;&#x67;">&#x4a;&#x44;&#64;&#x64;&#97;&#x72;&#97;&#107;&#106;&#121;&#46;&#x6f;&#114;&#x67;</a><br></p>
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Screenshots of DB data before and after of employee data edit from VS Code / IDE</td></tr>
@@ -123,11 +140,11 @@
 <tr><td> <em>Caption:</em> <p>Josephine Darakjy mail id will be changed<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231049086-f3070404-ef4e-4c4c-9dc9-d8ea09d2aab7.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>Josephine Darakjy mail id changed to <a href="mailto:&#x4a;&#x44;&#x40;&#x64;&#97;&#114;&#x61;&#107;&#106;&#121;&#46;&#111;&#114;&#103;">&#x4a;&#x44;&#x40;&#x64;&#97;&#114;&#x61;&#107;&#106;&#121;&#46;&#111;&#114;&#103;</a><br></p>
+<tr><td> <em>Caption:</em> <p>Josephine Darakjy mail id changed to <a href="mailto:&#74;&#x44;&#x40;&#100;&#97;&#x72;&#97;&#x6b;&#x6a;&#x79;&#46;&#111;&#114;&#x67;">&#74;&#x44;&#x40;&#100;&#97;&#x72;&#97;&#x6b;&#x6a;&#x79;&#46;&#111;&#114;&#x67;</a><br></p>
 </td></tr>
 </table></td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 6: </em> Add company </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707834-bf5a5b13-ec36-4597-9741-aa830c195be2.png"></td></tr>
+<table><tr><td> <em>Deliverable 6: </em> Add company </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshot of code for /add route of company</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231047055-9c58ec12-7e24-4427-9f6b-6300b112d8c5.png"/></td></tr>
 <tr><td> <em>Caption:</em> <p>retrievieng form data for name,adddress,state,city etc<br></p>
@@ -139,11 +156,13 @@
 <tr><td> <em>Caption:</em> <p>insert statement, showing success flash message and exception statement<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231047038-0ef27aed-2873-4bfe-a96d-15f445888a6b.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>asdf<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Screenshots of website for add company</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231047193-24e5a5c6-3bcb-4ed1-8638-c4f539df05e5.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>data filled<br></p>
+</td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231047590-7f3d7fe7-0491-47ad-9420-b346d477a5aa.png"/></td></tr>
 <tr><td> <em>Caption:</em> <p>submittted succesfully<br></p>
 </td></tr>
@@ -153,22 +172,24 @@
 </table></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Screenshot of new company DB record from VS Code / IDE</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231048114-f6995769-1cbc-4c63-af5e-4ab454156d62.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>company data is shown<br></p>
+</td></tr>
 </table></td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 7: </em> List/Search Comapny </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707834-bf5a5b13-ec36-4597-9741-aa830c195be2.png"></td></tr>
+<table><tr><td> <em>Deliverable 7: </em> List/Search Comapny </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshots of code for /search route of company</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231047820-0c76d0e6-46b0-476e-89df-74cb0cd4560f.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td> <em>Caption:</em> <p>select query<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231047817-fbc9472e-239d-450a-ba0e-9763801f2ce2.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td> <em>Caption:</em> <p>request args<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231047816-c2df0272-fa18-4aaf-8307-2d58405df7ee.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>asdf<br></p>
+<tr><td> <em>Caption:</em> <p>like statements<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231047810-50df9800-8570-40cd-a872-ea27b6607a58.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>code for limit and except statements<br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 2: </em> Screenshots of website for search company</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231045748-96744c12-18ba-4cc7-a7c0-ddea00ee233b.png"/></td></tr>
@@ -200,7 +221,7 @@
 <tr><td> <em>Caption:</em> <p>flash messages<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048056-a9258dc9-d6bd-41b4-a7c4-9142773e5d14.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>select statement, flash message to show success, exception <br></p>
+<tr><td> <em>Caption:</em> <p>update statement, flash message to show success, exception <br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048053-311fee0c-25e5-414e-90c2-5f5d4cc41fba.png"/></td></tr>
 <tr><td> <em>Caption:</em> <p>select query, exception statement and render_template()<br></p>
@@ -223,12 +244,12 @@
 </td></tr>
 </table></td></tr>
 </table></td></tr>
-<table><tr><td> <em>Deliverable 9: </em> Delete Employee and Delete Company </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707834-bf5a5b13-ec36-4597-9741-aa830c195be2.png"></td></tr>
+<table><tr><td> <em>Deliverable 9: </em> Delete Employee and Delete Company </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Screenshot of code for /delete route of employee</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>update statement, flash messages, exception<br></p>
+<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231058487-50b8e9bf-a579-42bb-8dff-0777885c46a9.png"/></td></tr>
+<tr><td> <em>Caption:</em> <p>delete employee, flash messages, exception<br></p>
 </td></tr>
-<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048521-42969b36-124c-40e6-8f4b-08a8c5f2dc98.png"/></td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231058304-75e3d440-c357-4f28-9bee-7ac1e9fd590c.png"/></td></tr>
 <tr><td> <em>Caption:</em> <p>request args and redirect statement<br></p>
 </td></tr>
 </table></td></tr>
@@ -242,9 +263,11 @@
 </table></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Screenshot of code for /delete route of company</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048514-59a44bca-147f-4a9c-a4c7-8c10a0200103.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>delete company, flash messages<br></p>
+</td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/63836995/231048521-42969b36-124c-40e6-8f4b-08a8c5f2dc98.png"/></td></tr>
-<tr><td> <em>Caption:</em> (missing)</td></tr>
+<tr><td> <em>Caption:</em> <p>request args and success flash message, redirect <br></p>
+</td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 4: </em> Add a before and after website screenshot of deleting a company (search results)</td></tr>
 <tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/123113073/231037817-06e21344-d2fb-4e55-8d1c-7b0980ab3c6a.png"/></td></tr>
