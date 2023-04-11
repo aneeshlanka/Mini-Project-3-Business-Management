@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Edit Company{% endblock %}
+{% block content %}
+{% from "country_state_selector.html" import country_state_selector %}
+
+<div class="container-fluid">
+    <div class="h1">Edit Company</div>
+    <div>
+        <form method="POST">
+            <div class="form-group">
+                <label for="name">name*</label>
+                <input type="text" class="form-control" id="name"
+                name="name" value="{{row.name}}" >
+            </div>
+            <div class="form-group">
+                <label for="address">address*</label>
+                <input type="text" class="form-control" id="address"
+                name="address" value="{{row.address}}" >
+            </div>
+            <div class="form-group">
+                <label for="website">website*</label>
+                <input type="text" class="form-control" id="website"
+                name="website" value="{{row.website}}" >
+            </div>
+            <div class="form-group">
+                <label for="city">city*</label>
+                <input type="text" class="form-control" id="city"
+                name="city" value="{{row.city}}" >
+            </div>
+
+            {# use this for country/state selection #}
+            {{country_state_selector(country=row.country, state=row.state)}}
+
+            <div class="form-group">
+                <label for="zip">zip*</label>
+                <input type="text" class="form-control" id="zip"
+                name="zip" value="{{row.zip}}" >
+            </div>
+            <input type="submit" class="btn btn-primary" value="Save Company" />
+        </form>
+    </div>
+</div>
+{% endblock %}

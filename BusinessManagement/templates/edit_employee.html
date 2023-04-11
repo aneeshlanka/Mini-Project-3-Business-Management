@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}Edit Employee{% endblock %}
+{% block content %}
+{% from "company_dropdown.html" import company_dropdown %}
+
+<div class="container-fluid">
+    <div class="h1">Edit Employee</div>
+    <div>
+        <form method="POST">
+            <div class="form-group">
+            <label for="first_name">First Name*</label>
+                <input type="text" class="form-control" id="first_name"
+                name="first_name" value="{{row.first_name}}" >
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name*</label>
+                <input type="text" class="form-control" id="last_name"
+                name="last_name" value="{{row.last_name}}" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control" id="email"
+                name="email" value="{{row.email}}" >
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company</label>
+                {{ company_dropdown(row.company_id) }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="Save Employee" />
+        </form>
+    </div>
+</div>
+{% endblock %}

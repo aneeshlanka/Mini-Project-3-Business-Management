@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block title %}Company Directory{% endblock %}
+{% block content %}
+{% from "country_state_selector.html" import country_state_selector %}
+{% from "sort_filter.html" import sort_filter %}
+<div class="container-fluid">
+    <div class="h1 text-center">Company Directory</div>
+    {# TODO
+    build a horizontal filter/sort form with
+    name (show as company name but name field should be name)
+    country/state (provided)
+    sort/order (using allowed_columns and provided partial template)
+    limit (default 10)
+    ensure all fields prefill with request arg data if provided
+    #}
+    <form method="GET">
+        <div class="row">
+            <div class="col">
+                <input id="name" class="form-control" placeholder="name" name="name" type="text" value="">
+            </div>
+
+            {{country_state_selector(layout="horizontal")}}
+            {{sort_filter(cols=[("name", "name"), ("address", "address"), ("city", "city"), ("country", "country"), ("state", "state"), ("zip", "zip"), ("Website", "website"), ("employees","employees")])}}
+            <div class="col">
+                <input id="limit" class="form-control" placeholder="limit" name="limit" type="number" value="10">
+            </div>
+            <div class="col">
+                <input type="submit" class="btn btn-primary" value="Filter" />
+            </div>
+            <div class="col">
+                <a href="?" class="btn btn-secondary">Reset</a>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table">
+            {% if rows and rows|length > 0 %}
+            <thead>
+                <tr class="text-capitalize">
+                    {# generate th tags for each column to display #}
+                    {# IMPORTANT use table column names as the headings, replace _ with space via filter #}
+                    
+                    {% for col in allowed_columns %}
+                    <th>{{ col[1] }}</th>
+                    {% endfor %}
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# generate tr with td tags for each piece of data #}
+                {# if the td is for website, display it as a link where the text is "website" and the url is the
+                website url #}
+                {# in the last column add the following
+                a view button that passes the company id to employee search (this will be a company employee
+                directory) also pass company_name as an argument
+                an edit button that passes the company id to company edit
+                a delete button that passes the company id and the request args to the company delete route
+                #}
+
+                {% for row in rows %}
+                <tr>
+                    {% for col in allowed_columns %}
+                    {% if col[0] == 'website' %}
+                    <td>
+                        <a href="{{ row['website'] }}">website</a>
+                    </td>
+                    {% else %}
+                    <td>{{ row[col[0]] }}</td>
+                    {% endif %}
+                    {% endfor %}
+                    <td>
+                        <a href="/company/edit?id={{ row['id'] }}">Edit</a>
+                        <a href="/company/delete?id={{ row['id'] }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            {% else %}
+            <tbody>
+                <tr>
+                    <td colspan="100%">No results to show</td>
+                </tr>
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+</div>
+{% endblock %}
