@@ -31,7 +31,7 @@ def search():
 
     # TODO search-4 append like filter for last_name if provided
     if lname:
-        query += " AND e.last_name LIKE %(last_name)s"
+        query += " AND e.last_name LIKE %(lname)s"
         args["lname"] = f"%{lname}%"
 
     # TODO search-5 append like filter for email if provided
