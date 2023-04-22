@@ -64,7 +64,7 @@ def search():
             flash("limit should be between 1 and 100 only.")
         else:
             query += " LIMIT %(limit)s"
-            args["limit"] = limit
+            args["limit"] = int(limit)
     else:
         query += " LIMIT 10"
     
