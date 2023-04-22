@@ -73,6 +73,7 @@ def search():
             rows = result.rows
     except Exception as e:
         # TODO search-10 make message user friendly
+        print(e)
         flash("attention!! There was an issue while searching for employees.")   
     return render_template("list_employees.html", rows=rows, allowed_columns=allowed_columns)
 
