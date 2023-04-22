@@ -64,7 +64,7 @@ def search():
         limit = 10
 
     query += " LIMIT %(limit)s"
-    args["limit"] = limit
+    args["limit"] = int(limit)
     print("query",query)
     print("args", args)
     try:
